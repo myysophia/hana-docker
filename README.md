@@ -25,7 +25,7 @@
     docker rm hana_dummy
     ```
 1. Adapt the HANA image version in `docker-compose.yml`
-1. Upack the dump into a sub-folder of `./dump`, e.g. `./dump/SOURCE_SCHEMA`
+1. Upack the dump into a sub-folder of `./dump`, e.g. `./dump/SOURCE_SCHEMA` # 恢复自己的数据
 1. Adapt the env vars in `docker-compose.yml` as necessary (check `post_start/999_import_dump` to understand how they are
    used during bootstrap)
 1. Tweak `post_start/999_import_dump` as necessary
