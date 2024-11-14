@@ -20,9 +20,9 @@
 1. Rename the folder to something more descriptive
 1. Dump the `post_start` hook scripts of the HANA image into this folder
     ```bash
-    docker create --name hana_dummy store/saplabs/hanaexpress:<version>
-    docker cp hana_dummy:/hana/hooks/post_start .
-    docker rm hana_dummy
+docker create --name hana_dummy registry.cn-hangzhou.aliyuncs.com/nova-base/hanaexpress:2.00.076.00.20240701.1
+docker cp hana_dummy:/hana/hooks/post_start .
+docker rm hana_dummy
     ```
 1. Adapt the HANA image version in `docker-compose.yml`
 1. Upack the dump into a sub-folder of `./dump`, e.g. `./dump/SOURCE_SCHEMA`
@@ -44,4 +44,17 @@ db.driver=com.sap.db.jdbc.Driver
 db.username=LOCALDEV
 db.password=Localdev1
 hanadb.storage.columnbased=true
+```
+
+hdbsql 连接
+```
+hdbsql -n 172.16.82.166:39041 -u SYSTEM -p HXEHana1
+
+Welcome to the SAP HANA Database interactive terminal.
+
+Type:  \h for help with commands
+       \q to quit
+
+hdbsql HXE=>
+
 ```
